@@ -17,9 +17,10 @@ public class Deal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
     @Column(name = "description")
@@ -32,15 +33,15 @@ public class Deal {
     private String photo;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private User masterId;
+    @JoinColumn(name = "master_id", referencedColumnName = "id")
+    private User master;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    private User clientId;
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private User client;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "telegram_user_id", referencedColumnName = "id", nullable = false)
     private TelegramUser telegramUserId;
 
     @Column(name = "created_at")
