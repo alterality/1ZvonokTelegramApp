@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: deal_service
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
