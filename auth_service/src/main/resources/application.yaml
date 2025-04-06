@@ -1,0 +1,39 @@
+server:
+  servlet:
+    context-path: /security/api/v1
+  port: 5000
+  compression:
+    enabled: true
+    mime-types: text/html,text/css,application/javascript,application/json
+
+spring:
+  liquibase:
+    driver-class-name: org.postgresql.Driver
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+  application:
+    name: auth_service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/local_db1
+    username: alter
+    password: 8153
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 70
+      idle-timeout: 600000
+      connection-test-query: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+security:
+  jwt:
+    access-secret: "ASDIJIUuhHUHUIIUVFfgff134gguYYlloigbVxseqwty"
+    access-lifetime: 600000
+    refresh-secret: "wenuiuweiGUYGYUVHBXWS112jBUIWCIOJBHJIHtdfGygioiHy6d78d"
+    refresh-lifetime: 86400000
+    auth-header: "Authorization"
+    bearer-prefix: "Bearer "
